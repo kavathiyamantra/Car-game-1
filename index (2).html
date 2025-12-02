@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stellar Scholar — Space Learning Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-shell">
+    <header id="topbar">
+      <div id="title">Stellar Scholar</div>
+      <div id="hud">
+        <div id="points">Points: <span id="points-val">0</span></div>
+        <div id="badges">Badges: <span id="badges-val">0</span></div>
+        <button id="missions-btn" class="icon-btn">Mission</button>
+        <button id="help-btn" class="icon-btn">Help</button>
+      </div>
+    </header>
+
+    <main id="stage">
+      <canvas id="space-canvas"></canvas>
+
+      <!-- Overlay UI -->
+      <div id="ui-overlay">
+        <div id="panel-left">
+          <div class="panel-section">
+            <h3>Planets</h3>
+            <div id="planet-list" class="list"></div>
+          </div>
+          <div class="panel-section">
+            <h3>Stars</h3>
+            <div id="star-list" class="list"></div>
+          </div>
+        </div>
+
+        <div id="panel-right">
+          <div class="panel-section">
+            <h3>Progress</h3>
+            <div id="progress-list"></div>
+          </div>
+          <div class="panel-section">
+            <h3>Rewards</h3>
+            <div id="rewards-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="bottombar">
+      <div id="messages">Welcome, explorer! Tap a planet to learn and play.</div>
+      <div id="controls">
+        <button id="sound-toggle" class="small">Sound ON</button>
+        <button id="reset-btn" class="small">Reset Progress</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Planet Modal -->
+  <div id="modal" class="hidden" role="dialog" aria-modal="true">
+    <div class="modal-inner">
+      <button id="close-modal" class="close">✕</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-fact"></p>
+
+      <div id="mini-game-area"></div>
+
+      <div id="quiz-controls" class="controls">
+        <button id="hint-btn" class="primary">Hint (-1 pt)</button>
+        <div id="quiz-feedback"></div>
+      </div>
+
+      <div id="modal-actions" class="controls">
+        <button id="play-mini-btn" class="primary">Play Mini-Game</button>
+        <button id="take-quiz-btn" class="primary">Take Quiz</button>
+        <button id="collect-btn" class="primary">Astronaut Mission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission Overlay -->
+  <div id="mission" class="hidden">
+    <div class="mission-inner">
+      <h2>Astronaut Mission</h2>
+      <p>Collect the floating space items! Tap items to collect them. Time: <span id="mission-timer">20</span>s</p>
+      <div id="mission-arena"></div>
+      <div class="controls">
+        <button id="end-mission-btn" class="primary">End Mission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help / Instructions -->
+  <div id="help" class="hidden">
+    <div class="help-inner">
+      <button id="close-help" class="close">✕</button>
+      <h2>How to play</h2>
+      <ul>
+        <li>Tap or click planets and stars to reveal facts and mini-games.</li>
+        <li>Complete quizzes to earn points and unlock new planets.</li>
+        <li>Use hints if you get stuck (costs a small number of points).</li>
+        <li>Complete astronaut missions to collect bonus items and badges.</li>
+        <li>Your progress is saved in your browser (localStorage).</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
